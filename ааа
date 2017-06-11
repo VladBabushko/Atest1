@@ -1,0 +1,29 @@
+#include <iostream>
+#include <conio.h>
+#include <vector>
+#include <stdio.h>
+#include <numeric>
+ 
+using namespace std;
+ 
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    size_t n;
+    cout << "Введите размерность пространства" << endl;
+    cin >> n;
+    vector<vector<int> > matrix(2, vector<int>(n));
+    for (vector<vector<int> >::iterator i = matrix.begin(); i != matrix.end(); ++i)
+    {
+        cout << "Введите вектор" << endl;
+        for (vector<int>::iterator j = i->begin(); j != i->end(); ++j)
+            cin >> *j;
+    }
+    vector<int> vec;
+    for (size_t i = 0; i < n; ++i)
+        vec.push_back(matrix[0][i] * matrix[1][i]);
+    cout << "Скалярное произведение " << accumulate(vec.begin(), vec.end(), 0) << endl;
+ 
+    _getch();
+    return EXIT_SUCCESS;
+}
